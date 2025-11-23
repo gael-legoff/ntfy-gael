@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Create an empty server config file
+touch $SNAP_DATA/server.yml
+
+# Create cache file and attachment cache directory
+touch $SNAP_COMMON/cache.db
+mkdir $SNAP_COMMON/attachmments

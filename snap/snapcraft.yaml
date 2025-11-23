@@ -1,0 +1,43 @@
+name: ntfy-gael
+version: "v2.15.0"
+base: core24
+summary: ntfy.sh | Send push notifications to your phone or desktop via PUT/POST
+description: |
+  ntfy (pronounced "notify") is a simple HTTP-based pub-sub notification service. With ntfy, you can send notifications to your phone or desktop via scripts from any computer, without having to sign up or pay any fees. If you'd like to run your own instance of the service, you can easily do so since ntfy is open source
+
+grade: stable
+confinement: strict
+
+platforms:
+  arm64:
+  amd64:
+
+license: "Apache-2.0"
+
+apps:
+  ntfy-serve:
+    command: ntfy-serve.sh
+    daemon: simple
+    plugs:
+    - network
+    - network-bind
+
+  ntfy:
+    command: usr/bin/ntfy
+    plugs:
+    - network
+    - network-bind
+
+parts:
+  launcher:
+    plugin: dump
+    source: snap/local/launcher
+    stage:
+      - ntfy-serve.sh
+
+  app:
+    plugin: dump
+    source: https://github.com/binwiederhier/ntfy/releases/download/v2.15.0/ntfy_2.15.0_linux_${CRAFT_ARCH_BUILD_FOR}.deb
+    source-type: deb
+    prime:
+      - usr/bin/ntfy
