@@ -1,5 +1,5 @@
 name: ntfy-gael
-version: "v2.17.0"
+version: "v2.18.0"
 base: core24
 summary: ntfy.sh | Send push notifications to your phone or desktop via PUT/POST
 description: |
@@ -9,8 +9,10 @@ grade: stable
 confinement: strict
 
 platforms:
-  arm64:
   amd64:
+  arm64:
+    build-on: [amd64, arm64]
+    build-for: [arm64]
 
 license: "Apache-2.0"
 
@@ -37,7 +39,7 @@ parts:
 
   app:
     plugin: dump
-    source: https://github.com/binwiederhier/ntfy/releases/download/v2.17.0/ntfy_2.17.0_linux_${CRAFT_ARCH_BUILD_FOR}.deb
+    source: https://github.com/binwiederhier/ntfy/releases/download/v2.18.0/ntfy_2.18.0_linux_${CRAFT_ARCH_BUILD_FOR}.deb
     source-type: deb
     prime:
       - usr/bin/ntfy
