@@ -23,6 +23,9 @@ attachment-cache-dir: "/var/snap/ntfy-gael/common/attachments"
 
 `sudo snap restart ntfy-gael.ntfy-serve`
 
+**2026-10-08**
+* v2.29.0 available on amd64 and arm64
+
 **2026-08-30**
 * v2.28.0 available on amd64 and arm64
 
